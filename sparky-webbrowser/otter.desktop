@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Otter
+Comment=Otter Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer otter
+Icon=otter-browser
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

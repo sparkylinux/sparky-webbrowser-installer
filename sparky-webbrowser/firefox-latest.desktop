@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Firefox Latest
+Name[pl_PL]=Firefox Najnowszy
+Comment=Firefox Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer firefox-latest
+Icon=firefox
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

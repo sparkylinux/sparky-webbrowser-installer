@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Brave
+Comment=Brave Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer brave
+Icon=brave
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

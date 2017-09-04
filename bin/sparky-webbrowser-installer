@@ -1,0 +1,1006 @@
+#!/bin/bash
+
+# Web browser installer Copyright 2017 Paweł "pavroo" Pijanowski
+# under GNU GPL 3
+# last update 2017/09/03 by pavroo
+
+# get default's locale file
+DEFLOCDIR="/usr/share/sparky/sparky-web"
+if [ "`cat /etc/default/locale | grep it_IT`" != "" ]; then
+. $DEFLOCDIR/it
+elif [ "`cat /etc/default/locale | grep pl_PL`" != "" ]; then
+. $DEFLOCDIR/pl
+else
+. $DEFLOCDIR/en
+fi
+
+testroot="`whoami`"
+if [ "$testroot" != "root" ]; then
+	echo "Must be root... Exiting now..."
+	exit 1
+fi
+
+ARCH=`uname -r | grep "amd64"`
+
+# 64bit only are: brave, cyberfox, google-chrome-stable, opera
+case $1  in
+  brave)
+	PACKAGE="brave"
+	WWW="brave.com"
+	if [ -f /usr/share/pixmaps/brave* ]; then
+		IMAGE="brave"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  chromium)
+	PACKAGE="chromium"
+	WWW="www.chromium.org"
+	IMAGE="chromium"
+     ;;
+  conkeror)
+	PACKAGE="conkeror"
+	WWW="conkeror.org"
+	IMAGE="web-browser"
+     ;;
+  cyberfox)
+	PACKAGE="cyberfox"
+	WWW="cyberfox.8pecxstudios.com"
+	if [ -f /usr/share/pixmaps/cyberfox.png* ]; then
+		IMAGE="cyberfox"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  dillo)
+	PACKAGE="dillo"
+	WWW="www.dillo.org"
+	if [ -f /usr/share/pixmaps/dillo* ]; then
+		IMAGE="dillo"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  dooble)
+	PACKAGE="dooble"
+	WWW="dooble.sourceforge.net"
+	if [ -f /usr/share/icons/hicolor/48x48/dooble* ]; then
+		IMAGE="/usr/share/icons/hicolor/48x48/dooble.png"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  epiphany)
+	PACKAGE="epiphany-browser"
+	WWW="wiki.gnome.org/Apps/Web"
+	IMAGE="epiphany"
+     ;;
+  firefox-esr)
+	PACKAGE="firefox-esr"
+	WWW="www.mozilla.org/en-US/firefox"
+	IMAGE="firefox"
+     ;;
+  firefox-latest)
+	PACKAGE="firefox"
+	WWW="www.mozilla.org/en-US/firefox"
+	IMAGE="firefox"
+     ;;
+  google-chrome)
+	PACKAGE="google-chrome-stable"
+	WWW="www.google.com/chrome"
+	IMAGE="google-chrome"
+     ;;
+  icecat)
+	PACKAGE="icecat"
+	WWW="www.gnu.org/software/gnuzilla"
+	if [ -f /usr/share/pixmaps/icecat* ]; then
+		IMAGE="icecat"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  iron)
+	if [ "$ARCH" = "" ]; then
+		PACKAGE="iron"
+	else
+		PACKAGE="iron64"
+	fi
+	WWW="www.srware.net/en/software_srware_iron.php"
+	if [ -f /usr/share/pixmaps/iron_product_logo.png ]; then
+		IMAGE="/usr/share/pixmaps/iron_product_logo.png"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  konqueror)
+	PACKAGE="konqueror"
+	WWW="konqueror.org"
+	IMAGE="konqueror"
+     ;;
+  midori)
+	PACKAGE="midori"
+	WWW="www.midori-browser.org"
+	IMAGE="midori"
+     ;;
+  netsurf)
+	PACKAGE="netsurf"
+	WWW="www.netsurf-browser.org"
+	if [ -f /usr/share/pixmaps/netsurf.png ]; then
+		IMAGE="netsurf"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  opera)
+	PACKAGE="opera"
+	WWW="www.opera.com"
+	IMAGE="opera"
+     ;;
+  otter)
+	PACKAGE="otter-browser"
+	WWW="otter-browser.org"
+	if [ -f /usr/share/icons/hicolor/48x48/apps/otter-browser* ]; then
+		IMAGE="otter-browser"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  palemoon)
+	PACKAGE="palemoon"
+	WWW="www.palemoon.org"
+	if [ -f /usr/share/pixmaps/palemoon* ]; then
+		IMAGE="palemoon"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  qupzilla)
+	PACKAGE="qupzilla"
+	WWW="qupzilla.com"
+	IMAGE="qupzilla"
+     ;;
+  seamonkey)
+	PACKAGE="seamonkey"
+	WWW="www.seamonkey-project.org"
+	if [ -f /opt/seamonkey/chrome/icons/default/main-window48.png ]; then
+		IMAGE="/opt/seamonkey/chrome/icons/default/main-window48.png"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  slimjet)
+	PACKAGE="slimjet"
+	WWW="www.slimjet.com"
+	if [ -f /usr/share/pixmaps/slimjet* ]; then
+		IMAGE="slimjet"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  tor-browser)
+	PACKAGE="tor-browser"
+	WWW="www.torproject.org/projects/torbrowser.html.en"
+	if [ -f /opt/tor-browser/Browser/browser/chrome/icons/default/default48* ]; then
+		IMAGE="/opt/tor-browser/Browser/browser/chrome/icons/default/default48.png"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+  vivaldi)
+	PACKAGE="vivaldi-stable"
+	WWW="vivaldi.com"
+	if [ -f /opt/vivaldi/product_logo_48* ]; then
+		IMAGE="/opt/vivaldi/product_logo_48.png"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
+esac
+
+DIALOG="`which yad` --width=450 --height=250 --window-icon=web-browser --image=$IMAGE"
+DIALOG2="`which yad` --width=500 --height=250 --window-icon=web-browser --image=$IMAGE"
+TEXT="--text="
+TITLE="--title="
+OKEXIT="--button=Ok:0 --button=$LOCAL1:1"
+MSGBOX="--button=Ok:0"
+PINGTEST=$(ping -c 1 debian.org | grep [0-9])
+WORKDIR="/tmp/sparky-chrome"
+SERVERG="https://dl.google.com/linux/direct"
+PACKG64="google-chrome-stable_current_amd64.deb"
+SPARKYVERCHECK4="`cat /etc/issue | grep 4`"
+DEBIANVERCHECK9="`cat /etc/issue | grep stretch`"
+
+if [ -f /opt/sparky/sparky-xterm ]; then
+. /opt/sparky/sparky-xterm
+else
+SPARKYXTERM="x-terminal-emulator"
+fi
+
+# install brave
+if [ "$1" = "brave" ]; then
+	if [ "$ARCH" = "" ]; then
+		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ -f /usr/bin/brave ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Brave\n\n$LOCAL8\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/brave ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install chromium
+if [ "$1" = "chromium" ]; then
+	if [ -f /usr/bin/chromium ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Chromium\n\n$LOCAL15\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/chromium ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install conkeror
+if [ "$1" = "conkeror" ]; then
+	if [ -f /usr/bin/conkeror ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Conkeror\n\n$LOCAL16\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/conkeror ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install cyberfox
+if [ "$1" = "cyberfox" ]; then
+	if [ "$ARCH" = "" ]; then
+		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ -f /usr/bin/cyberfox ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Cyberfox\n\n$LOCAL35\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/cyberfox ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install dillo
+if [ "$1" = "dillo" ]; then
+	if [ -f /usr/bin/dillo ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Dillo\n\n$LOCAL17\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/dillo ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install dooble
+if [ "$1" = "dooble" ]; then
+	if [ -f /usr/lib/dooble/dooble* ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Dooble\n\n$LOCAL18\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/lib/dooble/dooble* ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install epiphany
+if [ "$1" = "epiphany" ]; then
+	if [ -f /usr/bin/epiphany ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Epiphany\n\n$LOCAL19\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/epiphany ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install firefox-esr
+if [ "$1" = "firefox-esr" ]; then
+	if [ -f /usr/share/doc/firefox-esr/copyright ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Firefox-ESR\n\n$LOCAL20\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/share/doc/firefox-esr/copyright ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install firefox-latest
+if [ "$1" = "firefox-latest" ]; then
+	if [ "$SPARKYVERCHECK4" != "" ] || [ "$DEBIANVERCHECK9" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL34\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
+	if [ -f /usr/share/doc/firefox/copyright ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Firefox\n\n$LOCAL21\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/share/doc/firefox/copyright ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install google-chrome
+if [ "$1" = "google-chrome" ]; then
+	if [ "$ARCH" = "" ]; 	then
+		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ -f /usr/bin/google-chrome-stable ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Google Chrome\n\n$LOCAL12\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		rm -rf $WORKDIR
+		mkdir -p $WORKDIR
+		cd $WORKDIR
+		$SPARKYXTERM -e "wget $SERVERG/$PACKG64"
+		$SPARKYXTERM -e "dpkg -i $PACKG64"
+		$SPARKYXTERM -e "apt-get install -f -y"
+	else
+		exit 0
+	fi
+
+
+	# check has the application been installed
+	if [ -f /usr/bin/google-chrome-stable ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install icecat
+if [ "$1" = "icecat" ]; then
+	if [ -f /usr/bin/icecat ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Icecat\n\n$LOCAL22\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/icecat ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install iron
+if [ "$1" = "iron" ]; then
+	if [ -f /usr/share/iron/chrome-wrapper ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Iron\n\n$LOCAL23\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/share/iron/chrome-wrapper ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install konqueror
+if [ "$1" = "konqueror" ]; then
+	if [ -f /usr/bin/konqueror ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Konqueror\n\n$LOCAL24\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/konqueror ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install midori
+if [ "$1" = "midori" ]; then
+	if [ -f /usr/bin/midori ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Midori\n\n$LOCAL25\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/midori ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install netsurf
+if [ "$1" = "netsurf" ]; then
+	if [ -f /usr/bin/netsurf-gtk ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Netsurf\n\n$LOCAL26\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/netsurf-gtk ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install opera
+if [ "$1" = "opera" ]; then
+	if [ "$ARCH" = "" ]; then
+		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ -f /usr/bin/opera ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Opera\n\n$LOCAL13\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/opera ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install otter
+if [ "$1" = "otter" ]; then
+	if [ -f /usr/bin/otter-browser ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Otter\n\n$LOCAL27\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/otter-browser ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install palemoon
+if [ "$1" = "palemoon" ]; then
+	if [ -f /usr/bin/palemoon ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Palemoon\n\n$LOCAL28\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/palemoon ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install qupzilla
+if [ "$1" = "qupzilla" ]; then
+	if [ -f /usr/bin/qupzilla ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 QupZilla\n\n$LOCAL29\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/qupzilla ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install seamonkey
+if [ "$1" = "seamonkey" ]; then
+	if [ -f /usr/bin/seamonkey ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 SeaMonkey\n\n$LOCAL30\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/seamonkey ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install slimjet
+if [ "$1" = "slimjet" ]; then
+	if [ -f /usr/bin/flashpeak-slimjet ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Slimjet\n\n$LOCAL31\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/flashpeak-slimjet ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install tor-browser
+if [ "$1" = "tor-browser" ]; then
+	if [ -f /usr/bin/start-tor-browser ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 TOR Browser\n\n$LOCAL32\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/start-tor-browser ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+# install vivaldi
+if [ "$1" = "vivaldi" ]; then
+	if [ -f /usr/bin/vivaldi-stable ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Vivaldi\n\n$LOCAL33\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update"
+		$SPARKYXTERM -e "apt-get install $PACKAGE -y"
+		$SPARKYXTERM -e "apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/vivaldi-stable ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
+exit 0

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Netsurf
+Comment=Netsurf Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer netsurf
+Icon=netsurf
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

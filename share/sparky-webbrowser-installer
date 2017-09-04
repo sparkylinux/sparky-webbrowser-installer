@@ -1,0 +1,1 @@
+?package(sparky-webbrowser-installer):needs="X11" section="Applications/Network"        title="Web Browser Installer" command="remsu /usr/bin/sparky-webbrowser" icon="web-browser"
