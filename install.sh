@@ -31,7 +31,7 @@ else
 		mkdir -p /usr/lib/sparky-aptus/inst
 	fi
 	cp inst/* /usr/lib/sparky-aptus/inst/
-	cp share/sparky-webbrowser-installer.desktop /usr/share/aplications/
+	cp share/sparky-webbrowser-installer.desktop /usr/share/applications/
 	cp share/sparky-webbrowser-installer /usr/share/menu/
 	if [ ! -d /usr/share/sparky/sparky-web ]; then
 		mkdir -p /usr/share/sparky/sparky-web
