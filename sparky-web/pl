@@ -1,7 +1,7 @@
 # Polish localization file for Sparky Web Browser Installer
 # Copyright 2017 Paweł "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
 # Under the GNU GPL v3
-# Last update 2017/08/24 by pavroo
+# Last update 2017/10/01 by pavroo
 
 LOCAL1="Wyjście"
 LOCAL2="Instalacja Przeglądarki WWW"
@@ -37,3 +37,4 @@ LOCAL32="Tor Browser jest zmodyfikowaną wersją Mozilla Firefox, przeznaczoną 
 LOCAL33="Vivaldi – darmowa przeglądarka internetowa, tworzona i rozwijana przez byłego CEO firmy Opera Software ASA. Vivaldi jest programem darmowym, opartym na licencji freeware. Jest aplikacją własnościową o zamkniętym kodzie źródłowym stworzoną przez Vivaldi Technologies."
 LOCAL34="Twoja wersja systemu operacyjnego jest za stara aby zainstalować wybrany pakiet."
 LOCAL35="Cyberfox jest stworzony przez 8pecxstudios na otwartym kodzie źródłowym Mozilli. Aplikacja została zoptymalizowana do pracy na systemach opartych na 64-bitowych procesorach Intel i AMD."
+LOCAL36="Waterfox to bazująca na kodzie Firefoksa przeglądarka internetowa, przygotowana i skompilowana specjalnie z myślą o 64-bitowych edycjach systemu."

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Waterfox
+Comment=Waterfox Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer waterfox
+Icon=waterfox
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

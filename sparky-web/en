@@ -1,7 +1,7 @@
 # English localization file for Sparky Web Browser Installer
 # Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
 # Under the GNU GPL v3
-# Last update 2017/08/24 by pavroo
+# Last update 2017/10/01 by pavroo
 
 LOCAL1="Exit"
 LOCAL2="Web Browser Installer"
@@ -38,3 +38,4 @@ LOCAL32="The Tor Browser is a version of Mozilla Firefox that has been modified 
 LOCAL33="Vivaldi is a freeware, cross-platform web browser developed by Vivaldi Technologies, a company founded by Opera Software co-founder and former CEO Jon Stephenson von Tetzchner and Tatsuki Tomita."
 LOCAL34="Your version of operating system is too old to install the package."
 LOCAL35="Cyberfox is designed by 8pecxstudios. Taking over where Mozilla left off. Working to make a fast, stable and reliable x64-bit web browser accessible to all. Cyberfox is powered by Mozilla Firefox source code."
+LOCAL36="Free, open and private web browser focuses on giving users choice while also helping make the world a better place."
