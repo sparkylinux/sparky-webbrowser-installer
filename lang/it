@@ -1,8 +1,7 @@
 # File di traduzione in italiano per Sparky Web Browser Installer
 # Copyright 2017 Carlo Troiani <abbassolafrangetta@gmail.com> 2017/09/02
 # Rilasciato sotto licenza GNU GPL v3
-# Last update 2017/10/01 by pavroo
-
+# Last update 2017/11/05 by pavroo
 LOCAL1="Esci"
 LOCAL2="Web Browser Installer"
 LOCAL3="Test della connessione ionternet fallito!\n\nProbabilmente NON sei connesso ad internet od il server del repository principale è offline.\n\nControlla e prova di nuovo."
@@ -39,3 +38,4 @@ LOCAL33="Vivaldi e' un browser gratuito e multipiattaforma sviluppato da Vivaldi
 LOCAL34="La versione del sistema operativo e' troppo vecchia per intallare il pacchetto."
 LOCAL35="Cyberfox e' sviluppato da 8pecxstudios, partendo da dove Mozilla ha lasciato. Il progetto ambisce a fare e distribuire un browser a 64 bit veloce, stabile ed affidabile. Cyberfox e' basato sul codice sorgente di Mozilla Firefox."
 LOCAL36="Free, open and private web browser focuses on giving users choice while also helping make the world a better place."
+LOCAL37="Non può essere installato sulla tua versione di Debian/Sparky.\n\n"

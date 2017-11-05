@@ -1,8 +1,7 @@
 # Polish localization file for Sparky Web Browser Installer
 # Copyright 2017 Paweł "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
 # Under the GNU GPL v3
-# Last update 2017/10/01 by pavroo
-
+# Last update 2017/11/05 by pavroo
 LOCAL1="Wyjście"
 LOCAL2="Instalacja Przeglądarki WWW"
 LOCAL3="Połączenie z internetem nieudane!\n\nPrawdopodobnie NIE jesteś połączony z internetem lub główny serwer repozytoriów jest niedostępny.\n\nSprawdź to i spróbuj ponownie."
@@ -38,3 +37,4 @@ LOCAL33="Vivaldi – darmowa przeglądarka internetowa, tworzona i rozwijana prz
 LOCAL34="Twoja wersja systemu operacyjnego jest za stara aby zainstalować wybrany pakiet."
 LOCAL35="Cyberfox jest stworzony przez 8pecxstudios na otwartym kodzie źródłowym Mozilli. Aplikacja została zoptymalizowana do pracy na systemach opartych na 64-bitowych procesorach Intel i AMD."
 LOCAL36="Waterfox to bazująca na kodzie Firefoksa przeglądarka internetowa, przygotowana i skompilowana specjalnie z myślą o 64-bitowych edycjach systemu."
+LOCAL37="Ta aplikacja nie może być zainstalowany na obecnej wersji Debiana/Sparky.\n\n"

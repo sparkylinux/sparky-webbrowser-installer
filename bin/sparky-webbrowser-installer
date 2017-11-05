@@ -2,11 +2,13 @@
 
 # Web browser installer Copyright 2017 Paweł "pavroo" Pijanowski
 # under GNU GPL 3
-# last update 2017/10/08 by pavroo
+# last update 2017/11/05 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
-if [ "`cat /etc/default/locale | grep fr_FR`" != "" ]; then
+if [ "`cat /etc/default/locale | grep es_AR`" != "" ]; then
+. $DEFLOCDIR/es
+elif [ "`cat /etc/default/locale | grep fr_FR`" != "" ]; then
 . $DEFLOCDIR/fr
 elif [ "`cat /etc/default/locale | grep it_IT`" != "" ]; then
 . $DEFLOCDIR/it
@@ -22,7 +24,10 @@ if [ "$testroot" != "root" ]; then
 	exit 1
 fi
 
-ARCH=`uname -r | grep "amd64"`
+#ARCH=`uname -r | grep "amd64"`
+ARCH64="`uname -m | grep x86_64`"
+ARCH32="`uname -m | grep 686`"
+ARCHARM="`uname -m | grep arm`"
 
 # 64bit only are: brave, cyberfox, google-chrome-stable, opera, waterfox
 case $1  in
@@ -102,7 +107,7 @@ case $1  in
 	fi
      ;;
   iron)
-	#if [ "$ARCH" = "" ]; then
+	#if [ "$ARCH64" = "" ]; then
 		PACKAGE="iron"
 	#else
 	#	PACKAGE="iron64"
@@ -229,9 +234,9 @@ fi
 
 # install brave
 if [ "$1" = "brave" ]; then
-	if [ "$ARCH" = "" ]; then
+	if [ "$ARCH64" = "" ]; then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
-		exit 0
+		exit 1
 	fi
 
 	if [ -f /usr/bin/brave ]; then
@@ -333,9 +338,9 @@ fi
 
 # install cyberfox
 if [ "$1" = "cyberfox" ]; then
-	if [ "$ARCH" = "" ]; then
+	if [ "$ARCH64" = "" ]; then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
-		exit 0
+		exit 1
 	fi
 
 	if [ -f /usr/bin/cyberfox ]; then
@@ -404,6 +409,11 @@ fi
 
 # install dooble
 if [ "$1" = "dooble" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/lib/dooble/dooble* ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -541,9 +551,9 @@ fi
 
 # install google-chrome
 if [ "$1" = "google-chrome" ]; then
-	if [ "$ARCH" = "" ]; 	then
+	if [ "$ARCH64" = "" ]; 	then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
-		exit 0
+		exit 1
 	fi
 
 	if [ -f /usr/bin/google-chrome-stable ]; then
@@ -582,6 +592,11 @@ fi
 
 # install icecat
 if [ "$1" = "icecat" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/bin/icecat ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -615,6 +630,11 @@ fi
 
 # install iron
 if [ "$1" = "iron" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/bin/srware-iron ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -747,9 +767,9 @@ fi
 
 # install opera
 if [ "$1" = "opera" ]; then
-	if [ "$ARCH" = "" ]; then
+	if [ "$ARCH64" = "" ]; then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
-		exit 0
+		exit 1
 	fi
 
 	if [ -f /usr/bin/opera ]; then
@@ -818,6 +838,11 @@ fi
 
 # install palemoon
 if [ "$1" = "palemoon" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/bin/palemoon ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -884,6 +909,11 @@ fi
 
 # install seamonkey
 if [ "$1" = "seamonkey" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/bin/seamonkey ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -917,6 +947,11 @@ fi
 
 # install slimjet
 if [ "$1" = "slimjet" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/bin/flashpeak-slimjet ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -950,6 +985,11 @@ fi
 
 # install tor-browser
 if [ "$1" = "tor-browser" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/bin/start-tor-browser ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -983,6 +1023,11 @@ fi
 
 # install vivaldi
 if [ "$1" = "vivaldi" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ -f /usr/bin/vivaldi-stable ]; then
 		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 0
@@ -1016,9 +1061,9 @@ fi
 
 # install waterfox
 if [ "$1" = "waterfox" ]; then
-	if [ "$ARCH" = "" ]; then
+	if [ "$ARCH64" = "" ]; then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
-		exit 0
+		exit 1
 	fi
 
 	if [ -f /usr/bin/waterfox ]; then
