@@ -2,7 +2,7 @@
 # Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
 # Under the GNU GPL v3
 # Translated by 2017/11/02 by seacat
-# Last update 2018/02/13 by pavroo
+# Last update 2018/03/07 by pavroo
 LOCAL1="Salir"
 LOCAL2="Instalador del Navegador Web"
 LOCAL3="¡Falló la prueba de la conexión de Internet!\n\nProbablemente NO esté conectado a Internet o el servidor principal del repositorio esté caído.\n\nVerifique esto y vuelva a intentarlo."
@@ -41,3 +41,4 @@ LOCAL35="Cyberfox está diseñado por 8pecxstudios. Tomando el control donde lo de
 LOCAL36="Navegador web libre, abierto y privado que se enfoca en darle una oportunidad a los usuarios, a la vez que ayuda a hacer del mundo un mejor lugar."
 LOCAL37="It can not be installed on your version of Debian/Sparky.\n\n..."
 LOCAL38="Min is a faster, smarter web browser."
+LOCAL39="Un navegador web rápido y seguro"

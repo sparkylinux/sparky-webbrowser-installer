@@ -1,7 +1,7 @@
 # File di traduzione in italiano per Sparky Web Browser Installer
 # Copyright 2017 Carlo Troiani <abbassolafrangetta@gmail.com> 2017/09/02
 # Rilasciato sotto licenza GNU GPL v3
-# Last update 2018/02/13 by pavroo
+# Last update 2018/03/07 by pavroo
 LOCAL1="Esci"
 LOCAL2="Web Browser Installer"
 LOCAL3="Test della connessione ionternet fallito!\n\nProbabilmente NON sei connesso ad internet od il server del repository principale è offline.\n\nControlla e prova di nuovo."
@@ -40,3 +40,4 @@ LOCAL35="Cyberfox e' sviluppato da 8pecxstudios, partendo da dove Mozilla ha las
 LOCAL36="Web Browser libero, open-source e con un occhio di riguardo per la privacy che concede agli utenti liberta' di scelta ed aiuta a dare del mondo un posto migliore."
 LOCAL37="Non può essere installato sulla tua versione di Debian/Sparky.\n\n"
 LOCAL38="Min is a faster, smarter web browser."
+LOCAL39="Un browser we veloce e sicuro"

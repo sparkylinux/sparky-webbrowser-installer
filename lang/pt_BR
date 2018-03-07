@@ -2,6 +2,7 @@
 # Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
 # Sob a licença GNU GPL v3
 # Traduzido por Elton Fabrício Ferreira "eltonfabricio10" <eltonfabricio10@gmail.com> 2018/02/17
+# Last update 2018/03/07 by pavroo
 LOCAL1="Sair"
 LOCAL2="Instalação de Navegadores"
 LOCAL3="A conexão com a Internet falhou!\n\nProvavelmente você NÂO está conectado na Internet ou o servidor do repositório principal está desligado.\n\nVerifique e tente novamente."
@@ -39,3 +40,4 @@ LOCAL35="Cyberfox é projetado por 8pecxstudios. Retirando o local onde a Mozill
 LOCAL36="O navegador gratuito, aberto e privado se concentra em dar aos usuários a escolha, enquanto ajudam a tornar o mundo um lugar melhor."
 LOCAL37="Não pode ser instalado nessa versão do Debian/Sparky.\n\n..."
 LOCAL38="O Min é um navegador rápido e inteligente."
+LOCAL39="Um navegador Web rápido e seguro"

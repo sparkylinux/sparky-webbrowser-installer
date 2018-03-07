@@ -1,7 +1,7 @@
 ﻿# Fichier de localisation française de Sparky Web Browser Installer
 # Copyright 2016 hiver <hiver@club-internet.fr> 2016/06/05
 # Sous licence GNU GPL v2
-# Last update 2018/02/13 by pavroo
+# Last update 2018/03/07 by pavroo
 LOCAL1="Quitter"
 LOCAL2="Installation du navigateur internet"
 LOCAL3="Échec du test de la connexion internet!\n\nVous n'êtes probablement pas connecté à Internet ou bien le serveur du projet est hors-service.\n\nVérifiez et essayez à nouveau."
@@ -40,3 +40,4 @@ LOCAL35="Cyberfox est conçu par 8pecxstudios, reprenant là où Mozilla a laiss
 LOCAL36="Les navigateurs internet Libres, ouverts et privés visent à donner un choix aux utilisateurs et aident à bâtir un monde meilleur."
 LOCAL37="It can not be installed on your version of Debian/Sparky.\n\n..."
 LOCAL38="Min is a faster, smarter web browser."
+LOCAL39="Un navigateur Web rapide et sécurisé"

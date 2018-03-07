@@ -2,7 +2,7 @@
 
 # Web browser installer Copyright 2017-2018 Paweł "pavroo" Pijanowski
 # under GNU GPL 3
-# last update 2018/03/03 by pavroo
+# last update 2018/03/07 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -84,6 +84,15 @@ case $1  in
 	WWW="wiki.gnome.org/Apps/Web"
 	IMAGE="epiphany"
      ;;
+  falkon)
+	PACKAGE="falkon"
+	WWW="github.com/KDE/falkon"
+	if [ -f /usr/share/pixmaps/falkon* ]; then
+		IMAGE="falkon"
+	else
+		IMAGE="web-browser"
+	fi
+     ;;
   firefox-esr)
 	PACKAGE="firefox-esr"
 	WWW="www.mozilla.org/en-US/firefox"
@@ -109,11 +118,7 @@ case $1  in
 	fi
      ;;
   iron)
-	#if [ "$ARCH64" = "" ]; then
-		PACKAGE="iron"
-	#else
-	#	PACKAGE="iron64"
-	#fi
+	PACKAGE="iron"
 	WWW="www.srware.net/en/software_srware_iron.php"
 	if [ -f /usr/share/pixmaps/iron_product_logo.png ]; then
 		IMAGE="/usr/share/pixmaps/iron_product_logo.png"
@@ -486,6 +491,47 @@ if [ "$1" = "epiphany" ]; then
 	fi
 fi
 
+# install falkon
+if [ "$1" = "falkon" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
+	if [ "$SPARKYVERCHECK4" != "" ] || [ "$DEBIANVERCHECK9" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL34\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
+	if [ -f /usr/bin/falkon ]; then
+		$DIALOG $TEXT"\n$LOCAL6\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 0
+	fi
+
+	if [ "$PINGTEST" = "" ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL3"
+		exit 0
+	fi
+
+	# install the web browser
+	$DIALOG2 $TEXT"\n$LOCAL7 Falkon\n\n$LOCAL39\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
+	if [ $? = 0 ]; then
+		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+	else
+		exit 0
+	fi
+	
+	# check has the application been installed
+	if [ -f /usr/bin/falkon ]; then
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL10"
+		exit 0
+
+	else
+		$DIALOG $TITLE"$LOCAL2" $MSGBOX $TEXT"\n$LOCAL11\n\n$LOCAL5"
+		exit 0
+	fi
+fi
+
 # install firefox-esr
 if [ "$1" = "firefox-esr" ]; then
 	if [ -f /usr/share/doc/firefox-esr/copyright ]; then
@@ -519,6 +565,11 @@ fi
 
 # install firefox-latest
 if [ "$1" = "firefox-latest" ]; then
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
+		exit 1
+	fi
+
 	if [ "$SPARKYVERCHECK4" != "" ] || [ "$DEBIANVERCHECK9" != "" ]; then
 		$DIALOG $TEXT"\n$LOCAL34\n\n$LOCAL5" $TITLE"$LOCAL2" $MSGBOX
 		exit 1
