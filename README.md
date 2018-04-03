@@ -25,7 +25,7 @@ dpkg
 grep
 iputils-ping
 sparky-remsu
-sparky-xterm
+sparky-xterm (>= 0.2.0)
 wget
 yad
 

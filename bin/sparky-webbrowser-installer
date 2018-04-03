@@ -2,7 +2,7 @@
 
 # Web browser installer Copyright 2017-2018 Paweł "pavroo" Pijanowski
 # under GNU GPL 3
-# last update 2018/03/16 by pavroo
+# Last update 2018/04/01 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -244,10 +244,11 @@ PACKG64="google-chrome-stable_current_amd64.deb"
 SPARKYVERCHECK4="`cat /etc/issue | grep 4`"
 DEBIANVERCHECK9="`cat /etc/issue | grep stretch`"
 
-if [ -f /usr/bin/sparky-terminal ]; then
-	SPARKYXTERM="sparky-terminal"
+if [ -f /usr/bin/sparky-xterm ];then
+	SPARKYXTERM="/usr/bin/sparky-xterm"
 else
-	SPARKYXTERM="x-terminal-emulator"
+	echo "sparky-xterm is missing... Exiting..."
+	exit 1
 fi
 
 if [ "$1" = "" ]; then
@@ -281,7 +282,9 @@ if [ "$1" = "brave" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Brave\n\n$LOCAL8\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -312,7 +315,9 @@ if [ "$1" = "chromium" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Chromium\n\n$LOCAL15\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -343,7 +348,9 @@ if [ "$1" = "conkeror" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Conkeror\n\n$LOCAL16\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -379,7 +386,9 @@ if [ "$1" = "cyberfox" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Cyberfox\n\n$LOCAL35\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -410,7 +419,9 @@ if [ "$1" = "dillo" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Dillo\n\n$LOCAL17\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -446,7 +457,9 @@ if [ "$1" = "dooble" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Dooble\n\n$LOCAL18\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -477,7 +490,9 @@ if [ "$1" = "epiphany" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Epiphany\n\n$LOCAL19\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -518,7 +533,9 @@ if [ "$1" = "falkon" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Falkon\n\n$LOCAL39\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -549,7 +566,9 @@ if [ "$1" = "firefox-esr" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Firefox-ESR\n\n$LOCAL20\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -590,7 +609,9 @@ if [ "$1" = "firefox-latest" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Firefox\n\n$LOCAL21\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -629,7 +650,10 @@ if [ "$1" = "google-chrome" ]; then
 		rm -rf $WORKDIR
 		mkdir -p $WORKDIR
 		cd $WORKDIR
-		$SPARKYXTERM -e "wget $SERVERG/$PACKG64 && dpkg -i $PACKG64 && apt-get install -f -y"
+		$SPARKYXTERM "wget $SERVERG/$PACKG64"
+		$SPARKYXTERM "dpkg -i $PACKG64"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install -f -y"
 	else
 		exit 0
 	fi
@@ -665,7 +689,9 @@ if [ "$1" = "icecat" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Icecat\n\n$LOCAL22\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -701,7 +727,9 @@ if [ "$1" = "iron" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Iron\n\n$LOCAL23\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -732,7 +760,9 @@ if [ "$1" = "konqueror" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Konqueror\n\n$LOCAL24\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -763,7 +793,9 @@ if [ "$1" = "midori" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Midori\n\n$LOCAL25\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -799,7 +831,9 @@ if [ "$1" = "min" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Min\n\n$LOCAL38\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -830,7 +864,9 @@ if [ "$1" = "netsurf" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Netsurf\n\n$LOCAL26\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -866,7 +902,9 @@ if [ "$1" = "opera" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Opera\n\n$LOCAL13\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -897,7 +935,9 @@ if [ "$1" = "otter" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Otter\n\n$LOCAL27\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -933,7 +973,9 @@ if [ "$1" = "palemoon" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Palemoon\n\n$LOCAL28\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -964,7 +1006,9 @@ if [ "$1" = "qupzilla" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 QupZilla\n\n$LOCAL29\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -1000,7 +1044,9 @@ if [ "$1" = "seamonkey" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 SeaMonkey\n\n$LOCAL30\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -1036,7 +1082,9 @@ if [ "$1" = "slimjet" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Slimjet\n\n$LOCAL31\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -1072,7 +1120,9 @@ if [ "$1" = "tor-browser" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 TOR Browser\n\n$LOCAL32\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -1108,7 +1158,9 @@ if [ "$1" = "vivaldi" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Vivaldi\n\n$LOCAL33\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
@@ -1144,7 +1196,9 @@ if [ "$1" = "waterfox" ]; then
 	# install the web browser
 	$DIALOG2 $TEXT"\n$LOCAL7 Waterfox\n\n$LOCAL36\n\n$LOCAL9\n$WWW\n\n$LOCAL14" $TITLE"$LOCAL2" $OKEXIT
 	if [ $? = 0 ]; then
-		$SPARKYXTERM -e "apt-get update && apt-get install $PACKAGE -y && apt-get install -f"
+		$SPARKYXTERM "apt-get update"
+		$SPARKYXTERM "apt-get install $PACKAGE -y"
+		$SPARKYXTERM "apt-get install -f"
 	else
 		exit 0
 	fi
