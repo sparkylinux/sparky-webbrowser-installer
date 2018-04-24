@@ -1,7 +1,7 @@
 # English localization file for Sparky Web Browser Installer
 # Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
 # Under the GNU GPL v3
-# Last update 2018/03/07 by pavroo
+# Last update 2018/04/24 by pavroo
 LOCAL1="Exit"
 LOCAL2="Web Browser Installer"
 LOCAL3="Internet connection test failed!\n\nProbably you are NOT connected to the Internet or the main repository server is down.\n\nCheck it out and try again."
@@ -41,3 +41,12 @@ LOCAL36="Free, open and private web browser focuses on giving users choice while
 LOCAL37="It can not be installed on your version of Debian/Sparky.\n\n..."
 LOCAL38="Min is a faster, smarter web browser."
 LOCAL39="A fast and secure web browser"
+LOCAL40="Remove"
+LOCAL41="Reinstall"
+LOCAL42="Install"
+LOCAL43="This package is already installed."
+LOCAL44="What would you like to do now?"
+LOCAL45="Something is wrong! \nProbably you have stopped the installation, or your internet connection is broken, or the package is not availabel for you system version.\nCheck it out and try again."
+LOCAL46="Should I install the package you have chosen?"
+LOCAL47="The package has been successfully installed."
+LOCAL48="This package is not available for your system version."

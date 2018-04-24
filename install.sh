@@ -15,24 +15,14 @@
 #  Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
 if [ "$1" = "uninstall" ]; then
-	rm -f /usr/bin/sparky-webbrowser*
-	rm -rf /usr/lib/sparky-webbrowser
-	rm -f /usr/lib/sparky-aptus/inst/sparky-webbrowser*
-	rm -f /usr/share/applications/sparky-webbrowser*
-	rm -f /usr/share/menu/sparky-webbrowser*
+	rm -f /usr/bin/sparky-webbrowser-installer
 	rm -rf /usr/share/sparky/sparky-web
 else
 	cp bin/* /usr/bin/
-	if [ ! -d /usr/lib/sparky-webbrowser ]; then
-		mkdir -p /usr/lib/sparky-webbrowser
+	if [ ! -d /usr/lib/sparky-aptus/web ]; then
+		mkdir -p /usr/lib/sparky-aptus/web
 	fi
-	cp sparky-webbrowser/* /usr/lib/sparky-webbrowser/
-	if [ ! -d /usr/lib/sparky-aptus/inst ]; then
-		mkdir -p /usr/lib/sparky-aptus/inst
-	fi
-	cp inst/* /usr/lib/sparky-aptus/inst/
-	cp share/sparky-webbrowser-installer.desktop /usr/share/applications/
-	cp share/sparky-webbrowser-installer /usr/share/menu/
+	cp web/* /usr/lib/sparky-aptus/web/
 	if [ ! -d /usr/share/sparky/sparky-web ]; then
 		mkdir -p /usr/share/sparky/sparky-web
 	fi
