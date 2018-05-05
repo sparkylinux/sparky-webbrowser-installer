@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
-Name=QupZilla
-Comment=QupZilla Web browser
-Exec=remsu /usr/bin/sparky-webbrowser-installer qupzilla
-Icon=qupzilla
+Name=w3m
+Comment=Text based Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer w3m
+Icon=web-browser
 Terminal=false
 MultipleArgs=false
 Type=Application

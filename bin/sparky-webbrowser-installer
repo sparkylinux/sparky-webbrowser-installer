@@ -2,7 +2,7 @@
 
 # Web browser installer
 # Copyright 2017-2018 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2018/04/24 by pavroo
+# Last update 2018/05/05 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -44,6 +44,9 @@ PINGTEST=$(ping -c 1 debian.org | grep [0-9])
 WORKDIR="/tmp/sparky-chrome"
 SERVERG="https://dl.google.com/linux/direct"
 PACKG64="google-chrome-stable_current_amd64.deb"
+SERVERE="https://dl.google.com/dl/earth/client/current"
+PACKE32="google-earth-pro-stable_current_i386.deb"
+PACKE64="google-earth-pro-stable_current_amd64.deb"
 SPARKYVERCHECK4="`cat /etc/issue | grep 4`"
 DEBIANVERCHECK9="`cat /etc/issue | grep stretch`"
 if [ -f /usr/bin/sparky-xterm ];then
@@ -108,6 +111,10 @@ case $1 in
 	PACKAGE="dooble"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
+  elinks)
+	PACKAGE="elinks"
+	CHECKPACKAGE="/usr/bin/$PACKAGE"
+     ;;
   epiphany)
 	PACKAGE="epiphany-browser"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
@@ -144,6 +151,19 @@ case $1 in
 	PACKAGE="google-chrome-stable"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
+  google-earth)
+	if [ "$ARCHARM" != "" ]; then
+		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+		exit 1
+	fi
+	PACKAGE="google-earth"
+	CHECKPACKAGE="/usr/bin/$PACKAGE-pro"
+	if [ "$ARCH64" = "" ]; then
+		PACKEARTH="PACKE64"
+	else
+		PACKEARTH="PACKE32"
+	fi
+     ;;
   icecat)
 	if [ "$ARCHARM" != "" ]; then
 		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
@@ -162,6 +182,14 @@ case $1 in
      ;;
   konqueror)
 	PACKAGE="konqueror"
+	CHECKPACKAGE="/usr/bin/$PACKAGE"
+     ;;
+  links2)
+	PACKAGE="links2"
+	CHECKPACKAGE="/usr/bin/$PACKAGE"
+     ;;
+  lynx)
+	PACKAGE="lynx"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   midori)
@@ -200,10 +228,6 @@ case $1 in
 	PACKAGE="palemoon"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
-  qupzilla)
-	PACKAGE="qupzilla"
-	CHECKPACKAGE="/usr/bin/$PACKAGE"
-     ;;
   seamonkey)
 	if [ "$ARCHARM" != "" ]; then
 		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
@@ -230,6 +254,10 @@ case $1 in
      ;;
   vivaldi-stable)
 	PACKAGE="vivaldi-stable"
+	CHECKPACKAGE="/usr/bin/$PACKAGE"
+     ;;
+  w3m)
+	PACKAGE="w3m"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   waterfox)
@@ -276,6 +304,55 @@ if [ "$1" = "google-chrome-stable" ]; then
 			cd $WORKDIR
 			$SPARKYXTERM "wget $SERVERG/$PACKG64"
 			$SPARKYXTERM "dpkg -i $PACKG64"
+			$SPARKYXTERM "apt-get update"
+			$SPARKYXTERM "$INSTALL -f -y"
+			if [ ! -f "$CHECKPACKAGE" ]; then
+				$DIALOG $TEXT"\n$LOCAL45\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+				exit 1
+			else
+				$DIALOG $TEXT"\n$LOCAL47\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+				exit 1
+			fi
+
+		elif [ "$?" != "0" ]; then
+			exit 1
+		fi
+	fi
+
+# install, reinstall or remove google-earth
+elif [ "$1" = "google-earth" ]; then
+	if [ -f "$CHECKPACKAGE" ]; then
+		$DIALOG $TEXT"\n$LOCAL43\n$LOCAL44" $TITLE"$TITLETEXT" $BUTTONREMOVE $BUTTONREINSTALL $BUTTONEXIT
+		ret=$?
+		if [[ $ret -eq 3 ]]; then
+			$SPARKYXTERM "$UNINSTALL $PACKAGE"
+		elif [[ $ret -eq 4 ]]; then
+			if [ "$PINGTEST" = "" ]; then
+				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$LOCAL3 \n\n$LOCAL5"
+				exit 1
+			fi
+			rm -rf $WORKDIR
+			mkdir -p $WORKDIR
+			cd $WORKDIR
+			$SPARKYXTERM "wget $SERVERE/$PACKEARTH"
+			$SPARKYXTERM "dpkg -i $PACKEARTH"
+			$SPARKYXTERM "apt-get update"
+			$SPARKYXTERM "$INSTALL -f -y"
+		else
+			exit 1
+		fi
+	elif [ ! -f "$CHECKPACKAGE" ]; then
+		$DIALOG $TEXT"\n$LOCAL46" $TITLE"$TITLETEXT" $BUTTONINSTALL $BUTTONEXIT
+		if [ "$?" = "0" ]; then
+			if [ "$PINGTEST" = "" ]; then
+				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$LOCAL3 \n\n$LOCAL46"
+				exit 1
+			fi
+			rm -rf $WORKDIR
+			mkdir -p $WORKDIR
+			cd $WORKDIR
+			$SPARKYXTERM "wget $SERVERE/$PACKEARTH"
+			$SPARKYXTERM "dpkg -i $PACKEARTH"
 			$SPARKYXTERM "apt-get update"
 			$SPARKYXTERM "$INSTALL -f -y"
 			if [ ! -f "$CHECKPACKAGE" ]; then

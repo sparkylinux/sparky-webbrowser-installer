@@ -1,5 +1,5 @@
 Sparky Web Browser Installer
-This package provides an installation script of various web browsers.
+This package provides an installation script of various web browsers as APTus module.
 
 Copyright (C) 2017-2018 Paweł Pijanowski and others, see copyright file.
 
