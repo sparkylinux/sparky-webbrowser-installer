@@ -2,7 +2,7 @@
 
 # Web browser installer
 # Copyright 2017-2018 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2018/05/06 by pavroo
+# Last update 2018/05/07 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -206,15 +206,15 @@ case $1 in
      ;;
   netsurf)
 	PACKAGE="netsurf"
-	CHECKPACKAGE="/usr/share/doc/$PACKAGE"
+	CHECKPACKAGE="/usr/bin/netsurf-gtk"
      ;;
-  opera)
+  opera-stable)
 	if [ "$ARCH64" = "" ]; then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
 		exit 1
 	fi
-	PACKAGE="opera"
-	CHECKPACKAGE="/usr/bin/$PACKAGE"
+	PACKAGE="opera-stable"
+	CHECKPACKAGE="/usr/bin/opera"
      ;;
   otter-browser)
 	PACKAGE="otter-browser"
