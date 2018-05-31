@@ -2,7 +2,7 @@
 
 # Web browser installer
 # Copyright 2017-2018 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2018/05/29 by pavroo
+# Last update 2018/05/31 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -201,6 +201,10 @@ case $1 in
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   midori)
+	if [ "$SPARKYVERCHECK4" = "" ] || [ "$DEBIANVERCHECK9" = "" ]; then
+		$DIALOG $TEXT"\n$LOCAL48\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+		exit 1
+	fi
 	PACKAGE="midori"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
@@ -213,6 +217,10 @@ case $1 in
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   netsurf)
+	if [ "$SPARKYVERCHECK4" = "" ] || [ "$DEBIANVERCHECK9" = "" ]; then
+		$DIALOG $TEXT"\n$LOCAL48\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+		exit 1
+	fi
 	PACKAGE="netsurf"
 	CHECKPACKAGE="/usr/bin/netsurf-gtk"
      ;;
