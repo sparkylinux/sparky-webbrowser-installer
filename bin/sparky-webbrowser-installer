@@ -2,7 +2,7 @@
 
 # Web browser installer
 # Copyright 2017-2018 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2018/05/31 by pavroo
+# Last update 2018/06/22 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -252,14 +252,6 @@ case $1 in
 	PACKAGE="seamonkey"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
-  slimjet)
-	if [ "$ARCHARM" != "" ]; then
-		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
-		exit 1
-	fi
-	PACKAGE="slimjet"
-	CHECKPACKAGE="/usr/bin/flashpeak-slimjet"
-     ;;
   tor-browser)
 	if [ "$ARCHARM" != "" ]; then
 		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
@@ -285,6 +277,15 @@ case $1 in
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
 esac
+
+#  slimjet)
+#	if [ "$ARCHARM" != "" ]; then
+#		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+#		exit 1
+#	fi
+#	PACKAGE="slimjet"
+#	CHECKPACKAGE="/usr/bin/flashpeak-slimjet"
+#    ;;
 
 # install, reinstall or remove google-chrome
 if [ "$1" = "google-chrome-stable" ]; then
