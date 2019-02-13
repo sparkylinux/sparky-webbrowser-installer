@@ -2,7 +2,7 @@
 
 # Web browser installer
 # Copyright 2017-2019 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2019/01/30 by pavroo
+# Last update 2019/02/13 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -65,6 +65,7 @@ ARCH32="`uname -m | grep 686`"
 ARCHARM="`uname -m | grep arm`"
 
 if [ "$1" = "" ]; then
+	echo ""
 	echo "Usage of sparky-webbrowser-installer is as follows:"
 	echo ""
 	echo "sudo sparky-webbrowser-installer WEB-BROWSER-NAME"
@@ -82,7 +83,7 @@ case $1 in
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
 		exit 1
 	fi
-	PACKAGE="brave"
+	PACKAGE="brave-browser"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   chromium)
