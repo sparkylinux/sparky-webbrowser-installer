@@ -7,16 +7,20 @@ Files: *
 
 File: de
     Copyright (C) 2018 Deflet Bertling
-    License: GPL-2
+    License: GPL-3
+
+File: el
+    Copyright (C) 2019 jidan
+    License: GPL-3
 
 File: es
     Copyright (C) 2017 seacat
-    License: GPL-2
+    License: GPL-3
 
 File: fr
     Copyright (C) 2017 hiver <hiver@club-internet.fr>
     Copyright (C) 2018 Jean-Albert Caire
-    License: GPL-2
+    License: GPL-3
 
 File: hu
     Copyright 2019 Nemomen
@@ -24,19 +28,23 @@ File: hu
 
 File: id_ID
     Copyright (C) 2018 les kompie
-    License: GPL-2
+    License: GPL-3
 
 File: it
     Copyright (C) 2017 Carlo "malato" Troiani <abbasolafrangetta@gmail.com>
-    License: GPL-2
+    License: GPL-3
+
+File: ja
+    Copyright 2019 FuRuYa7
+    License: GNU GPL-3
 
 File: pt_BR
     Copyright (C) 2018 Elton Fabrício Ferreira "eltonfabricio10" <eltonfabricio10@gmail.com>
-    License: GPL-2
+    License: GPL-3
 
 File: pt_PT
     Copyright (C) 2018 José Vieira <jvieira33@sapo.pt>
-    Under GNU GPLv2
+    Under GNU GPLv3
 
 File: ru
     Copyright 2019 ChourS2008
