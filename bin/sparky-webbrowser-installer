@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Web browser installer
-# Copyright 2017-2019 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2019/12/28 by pavroo
+# Copyright 2017-2020 Paweł "pavroo" Pijanowski under GNU GPL 3
+# Last update 2020/04/21 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -262,13 +262,21 @@ case $1 in
 	PACKAGE="w3m"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
-  waterfox)
+  waterfox-classic)
 	if [ "$ARCH64" = "" ]; then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
 		exit 1
 	fi
 	PACKAGE="waterfox-classic-kpe"
 	CHECKPACKAGE="/usr/bin/waterfox-classic"
+     ;;
+  waterfox-current)
+	if [ "$ARCH64" = "" ]; then
+		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+		exit 1
+	fi
+	PACKAGE="waterfox-current-kpe"
+	CHECKPACKAGE="/usr/bin/waterfox-current"
      ;;
 esac
 
