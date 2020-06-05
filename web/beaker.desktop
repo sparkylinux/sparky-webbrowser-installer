@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Beaker Browser
+Comment=A peer-to-peer browser for Web hackers
+Exec=remsu /usr/bin/sparky-webbrowser-installer beaker
+Terminal=false
+Type=Application
+Categories=Network;
+Icon=beaker-browser
