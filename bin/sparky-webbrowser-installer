@@ -2,7 +2,7 @@
 
 # Web browser installer
 # Copyright 2017-2020 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2020/06/05 by pavroo
+# Last update 2020/06/15 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -58,6 +58,7 @@ SERVERE="https://dl.google.com/dl/earth/client/current"
 PACKE64="google-earth-pro-stable_current_amd64.deb"
 SPARKYVERCHECK4="`cat /etc/lsb-release | grep Tyche`"
 SPARKYVERCHECK5="`cat /etc/lsb-release | grep Nibiru`"
+SPARKYVERCHECK6="`cat /etc/lsb-release | grep Tolo`"
 if [ -f /usr/bin/sparky-xterm ];then
 	SPARKYXTERM="/usr/bin/sparky-xterm"
 else
@@ -231,8 +232,13 @@ case $1 in
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   netsurf)
-	PACKAGE="netsurf"
-	CHECKPACKAGE="/usr/bin/netsurf-gtk"
+  	if [ "$SPARKYVERCHECK4" != "" ] || [ "$SPARKYVERCHECK5" != "" ]; then
+		PACKAGE="netsurf"
+		CHECKPACKAGE="/usr/bin/netsurf-gtk"
+	else
+		PACKAGE="netsurf-gtk"
+		CHECKPACKAGE="/usr/bin/netsurf"
+	fi
      ;;
   opera-stable)
 	if [ "$ARCH64" = "" ]; then
