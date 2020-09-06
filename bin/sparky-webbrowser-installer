@@ -2,7 +2,7 @@
 
 # Web browser installer
 # Copyright 2017-2020 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2020/06/15 by pavroo
+# Last update 2020/09/06 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -105,6 +105,10 @@ case $1 in
 	fi
 	PACKAGE="brave-browser"
 	CHECKPACKAGE="/usr/share/doc/$PACKAGE/changelog.gz"
+     ;;
+  browsh)
+	PACKAGE="browsh"
+	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   chromium)
 	PACKAGE="chromium"
