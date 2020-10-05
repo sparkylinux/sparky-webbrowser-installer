@@ -2,33 +2,33 @@
 
 # Web browser installer
 # Copyright 2017-2020 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2020/09/06 by pavroo
+# Last update 2020/10/05 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
-if [ "`cat /etc/default/locale | grep LANG=de`" != "" ]; then
+if [ "`cat /etc/default/locale | grep LANG= | grep de`" != "" ]; then
 . $DEFLOCDIR/de
-elif [ "`cat /etc/default/locale | grep LANG=el`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep el`" != "" ]; then
 . $DEFLOCDIR/el
-elif [ "`cat /etc/default/locale | grep LANG=es`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep es`" != "" ]; then
 . $DEFLOCDIR/es
-elif [ "`cat /etc/default/locale | grep LANG=fr`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep fr`" != "" ]; then
 . $DEFLOCDIR/fr
-elif [ "`cat /etc/default/locale | grep LANG=hu`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep hu`" != "" ]; then
 . $DEFLOCDIR/hu
-elif [ "`cat /etc/default/locale | grep LANG=id_ID`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep id_ID`" != "" ]; then
 . $DEFLOCDIR/id_ID
-elif [ "`cat /etc/default/locale | grep LANG=it`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep it`" != "" ]; then
 . $DEFLOCDIR/it
-elif [ "`cat /etc/default/locale | grep LANG=ja`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep ja`" != "" ]; then
 . $DEFLOCDIR/ja
-elif [ "`cat /etc/default/locale | grep LANG=pl`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep pl`" != "" ]; then
 . $DEFLOCDIR/pl
-elif [ "`cat /etc/default/locale | grep LANG=pt_BR`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep pt_BR`" != "" ]; then
 . $DEFLOCDIR/pt_BR
-elif [ "`cat /etc/default/locale | grep LANG=pt_PT`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep pt_PT`" != "" ]; then
 . $DEFLOCDIR/pt_PT
-elif [ "`cat /etc/default/locale | grep LANG=ru`" != "" ]; then
+elif [ "`cat /etc/default/locale | grep LANG= | grep ru`" != "" ]; then
 . $DEFLOCDIR/ru
 else
 . $DEFLOCDIR/en
@@ -56,9 +56,9 @@ SERVERG="https://dl.google.com/linux/direct"
 PACKG64="google-chrome-stable_current_amd64.deb"
 SERVERE="https://dl.google.com/dl/earth/client/current"
 PACKE64="google-earth-pro-stable_current_amd64.deb"
-SPARKYVERCHECK4="`cat /etc/lsb-release | grep Tyche`"
-SPARKYVERCHECK5="`cat /etc/lsb-release | grep Nibiru`"
-SPARKYVERCHECK6="`cat /etc/lsb-release | grep Tolo`"
+#SPARKYVERCHECK4="`cat /etc/lsb-release | grep Tyche`"
+#SPARKYVERCHECK5="`cat /etc/lsb-release | grep Nibiru`"
+#SPARKYVERCHECK6="`cat /etc/lsb-release | grep Tolo`"
 if [ -f /usr/bin/sparky-xterm ];then
 	SPARKYXTERM="/usr/bin/sparky-xterm"
 else
@@ -87,10 +87,6 @@ fi
 # 64bit only are: brave, cyberfox, google-chrome-stable, opera, waterfox
 case $1 in
   beaker)
-	if [ "$SPARKYVERCHECK4" != "" ] || [ "$SPARKYVERCHECK5" != "" ]; then
-		$DIALOG $TEXT"\n$LOCAL34\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
-		exit 1
-	fi
 	if [ "$ARCH64" = "" ]; then
 		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
 		exit 1
@@ -112,10 +108,6 @@ case $1 in
      ;;
   chromium)
 	PACKAGE="chromium"
-	CHECKPACKAGE="/usr/bin/$PACKAGE"
-     ;;
-  conkeror)
-	PACKAGE="conkeror"
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   cyberfox)
@@ -161,10 +153,6 @@ case $1 in
   firefox-latest)
 	if [ "$ARCHARM" != "" ]; then
 		$DIALOG $TEXT"\n$LOCAL37\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
-		exit 1
-	fi
-	if [ "$SPARKYVERCHECK4" != "" ] || [ "$SPARKYVERCHECK5" != "" ]; then
-		$DIALOG $TEXT"\n$LOCAL34\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
 		exit 1
 	fi
 	PACKAGE="firefox"
@@ -236,13 +224,8 @@ case $1 in
 	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   netsurf)
-  	if [ "$SPARKYVERCHECK4" != "" ] || [ "$SPARKYVERCHECK5" != "" ]; then
-		PACKAGE="netsurf"
-		CHECKPACKAGE="/usr/bin/netsurf-gtk"
-	else
-		PACKAGE="netsurf-gtk"
-		CHECKPACKAGE="/usr/bin/netsurf"
-	fi
+	PACKAGE="netsurf-gtk"
+	CHECKPACKAGE="/usr/bin/netsurf"
      ;;
   opera-stable)
 	if [ "$ARCH64" = "" ]; then

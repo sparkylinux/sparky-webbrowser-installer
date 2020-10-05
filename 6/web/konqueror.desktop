@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Konqueror
+Comment=Konqueror Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer konqueror
+Icon=konqueror
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Links 2
+Comment=Links2 Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer links2
+Icon=links2
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

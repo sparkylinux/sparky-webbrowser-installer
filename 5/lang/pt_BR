@@ -1,0 +1,29 @@
+# Arquivo de localização para o Português do Brasil do aplicativo Sparky Web Browser Installer
+# Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
+# Sob a licença GNU GPL v3
+# Traduzido por Elton Fabrício Ferreira "eltonfabricio10" <eltonfabricio10@gmail.com> 2018/02/17
+# Last update 2018/11/30 by pavroo
+LOCAL1="Sair"
+LOCAL2="Instalação de Navegadores"
+LOCAL3="A conexão com a Internet falhou!\n\nProvavelmente você NÂO está conectado na Internet ou o servidor do repositório principal está desligado.\n\nVerifique e tente novamente."
+LOCAL4="O Navegador está disponível somente para arquitetura amd64."
+LOCAL5="Saindo..."
+LOCAL6="O Navegador já está instalado."
+LOCAL7="Será instalado o Navegador:"
+LOCAL9="Site do projeto:"
+LOCAL10="O Navegador foi instalado com sucesso."
+LOCAL11="Algo deu errado!\n\nNão foi possível encontrar os arquivos do novo Navegador."
+LOCAL14="Você gostaria de instalar o Navegador agora?"
+LOCAL34="A versão do seu sistema operacional é muito antiga para instalar esse pacote."
+LOCAL37="Não pode ser instalado nessa versão do Debian/Sparky.\n\n..."
+LOCAL38="O Min é um navegador rápido e inteligente."
+LOCAL39="Um navegador Web rápido e seguro"
+LOCAL40="Remover"
+LOCAL41="Reinstalar"
+LOCAL42="Instalar"
+LOCAL43="Esse pacote já está instalado."
+LOCAL44="O que você gostaria de fazer agora?"
+LOCAL45="Algo está errado! \nProvavelmente você parou a instalação, ou sua conexão com a Internet está bloqueada, ou o pacote não está disponível para a versão do seu sistema.\nVerifique e tente novamente."
+LOCAL46="Gostaria de instalar o pacote que você escolheu?"
+LOCAL47="O pacote foi instalado com sucesso."
+LOCAL48="Esse pacote não está disponível para a versão do seu sistema."

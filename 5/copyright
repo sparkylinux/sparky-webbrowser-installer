@@ -1,0 +1,70 @@
+Upstream Author(s): 
+    Paweł "pavroo" Pijanowski <pavroo@onet.eu>
+    
+Files: *
+    Copyright (C) 2017-2020 Paweł Pijanowski
+    License: GNU GPL-3
+
+File: de
+    Copyright (C) 2018 Deflet Bertling
+    License: GPL-3
+
+File: el
+    Copyright (C) 2019 jidan
+    License: GPL-3
+
+File: es
+    Copyright (C) 2017 seacat
+    License: GPL-3
+
+File: fr
+    Copyright (C) 2017 hiver <hiver@club-internet.fr>
+    Copyright (C) 2018 Jean-Albert Caire
+    License: GPL-3
+
+File: hu
+    Copyright 2019 Nemomen
+    License: GNU GPL-3
+
+File: id_ID
+    Copyright (C) 2018 les kompie
+    License: GPL-3
+
+File: it
+    Copyright (C) 2017 Carlo "malato" Troiani <abbasolafrangetta@gmail.com>
+    License: GPL-3
+
+File: ja
+    Copyright 2019 FuRuYa7
+    License: GNU GPL-3
+
+File: pt_BR
+    Copyright (C) 2018 Elton Fabrício Ferreira "eltonfabricio10" <eltonfabricio10@gmail.com>
+    License: GPL-3
+
+File: pt_PT
+    Copyright (C) 2018 José Vieira <jvieira33@sapo.pt>
+    Under GNU GPLv3
+
+File: ru
+    Copyright 2019 ChourS2008
+    License: GNU GPL-3
+
+License:
+
+    This package is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+ 
+    This package is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+ 
+    You should have received a copy of the GNU General Public License
+    along with this package; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+On Debian systems, the complete text of the Licenses
+can be found in `/usr/share/common-licenses'.

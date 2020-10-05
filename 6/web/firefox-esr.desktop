@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Firefox ESR
+Comment=Firefox ESR Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer firefox-esr
+Icon=firefox
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

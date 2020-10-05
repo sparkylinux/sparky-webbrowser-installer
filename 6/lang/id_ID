@@ -1,0 +1,29 @@
+# Indonesian localization file for Sparky Web Browser Installer
+# Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
+# Under the GNU GPL v3
+# Last update 2018/11/30 by pavroo
+# Translated to Indonesian by les kompie
+LOCAL1="Keluar"
+LOCAL2="Penginstal Browser Web"
+LOCAL3="Uji koneksi internet gagal!\n\nMungkin anda tidak terhubung ke Internet, atau server repositori utama sedang mati.\n\nPeriksa dan coba lagi."
+LOCAL4="Aplikasi ini hanya tersedia untuk arsitektur AMD64."
+LOCAL5="Keluar"
+LOCAL6="Aplikasi ini sudah ter-instal."
+LOCAL7="Ini akan menginstal browser web:"
+LOCAL9="Situs proyek:"
+LOCAL10="Aplikasi sudah berhasil di-instal."
+LOCAL11="Ada yang salah!\n\nFile browser web yang baru tidak bisa ditemukan."
+LOCAL14="Apakah sekarang anda mau menginstal browser web?"
+LOCAL34="Versi sistem operasi anda terlalu tua untuk paket ini."
+LOCAL37="Ini tidak bisa di-instal di versi Debian/Sparky anda.\n\n..."
+LOCAL38="Min adalah browser web yang lebih cepat dan lebih pintar."
+LOCAL39="Browser web yang cepat dan aman"
+LOCAL40="Hapus"
+LOCAL41="Instal ulang"
+LOCAL42="Instal"
+LOCAL43="Paket ini sudah ter-instal."
+LOCAL44="Apa yang anda mau lakukan sekarang?"
+LOCAL45="Ada yang salah! \nMungkin anda menghentikan proses instal, atau koneksi internet anda terputus, atau paket tidak tersedia untuk versi sistem anda.\nPeriksa dan coba lagi."
+LOCAL46="Apakah anda mau menginstal paket yang anda pilih?"
+LOCAL47="Paket telah berhasil di-instal."
+LOCAL48="Paket ini tidak tersedia untuk versi sistem anda."

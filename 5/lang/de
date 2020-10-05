@@ -1,0 +1,28 @@
+# German localization file for Sparky Web-Browser Installer by Deflet Bertling
+# Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
+# Under the GNU GPL v3
+# Last update 2018/11/30 by pavroo
+LOCAL1="Exit"
+LOCAL2="Web-Browser Installer"
+LOCAL3="Internet Verbindungstest fehlgeschlagen!\n\nWahrscheinlich bist du NICHT mit dem Internet verbunden oder der Hauptversionsserver ist nicht verfügbar..\n\nÜberprüfe das und versuche es erneut."
+LOCAL4="Diese Applikation ist nur für amd64 Architektur erhältlich."
+LOCAL5="Beende..."
+LOCAL6="Diese Applikation ist schon installiert."
+LOCAL7="Das wird einen Web-Browser installieren:"
+LOCAL9="Projektseite:"
+LOCAL10="Die Applikation wurde erfolgreich installiert."
+LOCAL11="Etwas ist falsch!\n\nKann die neuen Web-Browser Daten NICHT finden."
+LOCAL14="Möchtest du diesen Web-Browser jetzt installieren?"
+LOCAL34="Deine Version des Betriebssystems ist zu alt für die Installation dieses Pakets."
+LOCAL37="Es kann nicht auf deiner Version von Debian/Sparky installiert werden.\n\n..."
+LOCAL38="Min ist ein schneller, schlauer Web-Browser."
+LOCAL39="Ein schneller und sicherer Web-Browser"
+LOCAL40="Remove"
+LOCAL41="Reinstall"
+LOCAL42="Install"
+LOCAL43="This package is already installed."
+LOCAL44="What would you like to do now?"
+LOCAL45="Something is wrong! \nProbably you have stopped the installation, or your internet connection is broken, or the package is not availabel for you system version.\nCheck it out and try again."
+LOCAL46="Should I install the package you have chosen?"
+LOCAL47="The package has been successfully installed."
+LOCAL48="This package is not available for your system version."

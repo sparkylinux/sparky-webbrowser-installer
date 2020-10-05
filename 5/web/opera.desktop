@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Opera
+Comment=Opera Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer opera-stable
+Icon=opera
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

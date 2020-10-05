@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=IceCat
+Comment=IceCat GNU Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer icecat
+Icon=/usr/share/pixmaps/icecat.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

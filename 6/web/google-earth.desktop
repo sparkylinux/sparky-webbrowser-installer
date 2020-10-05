@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Google Earth
+Comment=3D planet viewer
+Comment[pl]=Oglądanie planety w 3D
+Exec=remsu /usr/bin/sparky-webbrowser-installer google-earth
+Icon=google-earth-pro
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

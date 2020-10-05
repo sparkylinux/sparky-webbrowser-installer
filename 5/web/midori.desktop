@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Midori
+Comment=Midori Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer midori
+Icon=midori
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

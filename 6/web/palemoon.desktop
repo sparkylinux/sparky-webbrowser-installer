@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Palemoon
+Comment=Palemoon Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer palemoon
+Icon=palemoon
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

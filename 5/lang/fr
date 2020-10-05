@@ -1,0 +1,29 @@
+﻿# Fichier de localisation française de Sparky Web Browser Installer
+# Copyright 2016 hiver <hiver@club-internet.fr> 2016/06/05
+# Copyright 2018 Jean-Albert Caire
+# Sous licence GNU GPL v2
+# last update 2018/11/30 by pavroo
+LOCAL1="Quitter"
+LOCAL2="Installation du navigateur internet"
+LOCAL3="Échec du test de la connexion internet!\n\nVous n'êtes probablement pas connecté à Internet ou bien le serveur du projet est hors-service.\n\nVérifiez et essayez à nouveau."
+LOCAL4="L'application n'est disponible que pour l'architecture amd64."
+LOCAL5="Sortie..."
+LOCAL6="L'application est déjà installée."
+LOCAL7="Ceci vous permet d'installer un navigateur internet:"
+LOCAL9="Site du projet:"
+LOCAL10="L'application a été installée avec succès!"
+LOCAL11="Il y a un problème! \n\nJe ne peux trouver les fichiers du nouveau navigateur."
+LOCAL14="Voulez-vous installer le navigateur internet maintenant?"
+LOCAL34="Votre version de système d'exploitation est trop ancienne pour installer le paquet."
+LOCAL37="It can not be installed on your version of Debian/Sparky.\n\n..."
+LOCAL38="Min is a faster, smarter web browser."
+LOCAL39="Un navegador web rápido y seguro"
+LOCAL40="Remove"
+LOCAL41="Reinstall"
+LOCAL42="Install"
+LOCAL43="This package is already installed."
+LOCAL44="What would you like to do now?"
+LOCAL45="Something is wrong! \nProbably you have stopped the installation, or your internet connection is broken, or the package is not availabel for you system version.\nCheck it out and try again."
+LOCAL46="Should I install the package you have chosen?"
+LOCAL47="The package has been successfully installed."
+LOCAL48="This package is not available for your system version."

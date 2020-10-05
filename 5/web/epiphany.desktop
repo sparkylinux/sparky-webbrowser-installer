@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Epiphany
+Comment=Epiphany Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer epiphany
+Icon=epiphany
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

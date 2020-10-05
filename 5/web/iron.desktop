@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Iron
+Comment=Iron Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer iron
+Icon=/usr/share/pixmaps/iron_product_logo.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

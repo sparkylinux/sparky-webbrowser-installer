@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Waterfox Classic
+Comment=Waterfox Classic Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer waterfox-classic
+Icon=waterfox-classic
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

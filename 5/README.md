@@ -15,3 +15,30 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Dependencies:
+-------------
+apt
+bash
+coreutils
+dpkg
+grep
+iputils-ping
+sparky-remsu
+sparky-xterm (>= 0.2.0)
+wget
+yad
+
+Recommends:
+-------------
+sparky-aptus
+
+Install:
+-------------
+su (or sudo) 
+./install.sh
+
+Uninstall:
+-------------
+su (or sudo)
+./install.sh uninstall

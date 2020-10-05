@@ -1,0 +1,28 @@
+# Hungarian localization file for Sparky Web Browser Installer (Translated by Nemomen)
+# Copyright 2017 Pawel "pavroo" Pijanowski <pavroo@onet.eu> 2017/08/19
+# Under the GNU GPL v3
+# Last update 2019/09/16 by pavroo
+LOCAL1="Kilépés"
+LOCAL2="Webböngésző Telepítő"
+LOCAL3="Az Internet kapcsolati teszt sikertelen!\n\nLehet, hogy Ön NEM kapcsolódik az Internet-hálózatra vagy a fő tárolószerver nem érhető el.\n\nEllenőrizze és próbálja újra!”
+LOCAL4="Az alkalmazás csak amd64 architektúrára (felépítésre) érhető el."
+LOCAL5="Kilépés..."
+LOCAL6="Az alkalmazás már telepítve."
+LOCAL7="Ez telepíteni fogja a webböngészőt:"
+LOCAL9="Projekt oldal:"
+LOCAL10="Az alkalmazás sikeresen telepítve."
+LOCAL11="Valami hibás!\n\nNEM találhatóak új webböngésző fájlok.”
+LOCAL14="Kíván új webböngészőt telepíteni?"
+LOCAL34="Az Ön operációs rendszer verziója túl régi ennek a csomagnak a telepítéséhez."
+LOCAL37="Ez nem telepíthető az Ön Debian/Sparky változatához.\n\n..."
+LOCAL38="(A) Min egy gyorsabb, elegánsabb webböngésző."
+LOCAL39="Egy gyors és biztonságos webböngésző"
+LOCAL40="Eltávolítás"
+LOCAL41="Újratelepítés"
+LOCAL42="Telepítés"
+LOCAL43="Ez a csomag már telepítve."
+LOCAL44="Mit kíván most tenni?"
+LOCAL45="Valami hibás! \nTalán leállította a telepítést vagy megszakadt az Internet kapcsolata, vagy nem érhető el az Ön változatához csomag.\nEllenőrizze és próbálja újra."
+LOCAL46="Telepíthetem az Ön által kiválasztott csomagot?"
+LOCAL47="A csomag sikeresen telepítve."
+LOCAL48="Ez a csomag nem érhető el az Ön rendszere változatához."

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Min
+Comment=Min Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer min
+Icon=min
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Google Chrome
+Comment=Google Chrome Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer google-chrome-stable
+Icon=google-chrome
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;

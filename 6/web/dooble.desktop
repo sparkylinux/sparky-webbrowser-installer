@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Dooble
+Comment=Dooble Web browser
+Exec=remsu /usr/bin/sparky-webbrowser-installer dooble
+Icon=/usr/share/icons/hicolor/48x48/dooble.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=Network;
