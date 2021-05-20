@@ -1,7 +1,7 @@
 Sparky Web Browser Installer
 This package provides an installation script of various web browsers as APTus module.
 
-Copyright (C) 2017-2020 Paweł Pijanowski and others, see copyright file.
+Copyright (C) 2017-2021 Paweł Pijanowski and others, see copyright file.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

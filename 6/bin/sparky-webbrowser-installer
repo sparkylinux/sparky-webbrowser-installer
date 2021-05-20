@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Web browser installer
-# Copyright 2017-2020 Paweł "pavroo" Pijanowski under GNU GPL 3
-# Last update 2020/11/26 by pavroo
+# Copyright 2017-2021 Paweł "pavroo" Pijanowski under GNU GPL 3
+# Last update 2021/05/20 by pavroo
 
 # get default's locale file
 DEFLOCDIR="/usr/share/sparky/sparky-web"
@@ -198,6 +198,14 @@ case $1 in
 	fi
 	PACKAGE="iron"
 	CHECKPACKAGE="/usr/bin/srware-iron"
+     ;;
+  librewolf)
+	if [ "$ARCH64" = "" ]; then
+		$DIALOG $TEXT"\n$LOCAL4\n\n$LOCAL5" $TITLE"$TITLETEXT" $MSGBOX
+		exit 1
+	fi
+	PACKAGE="librewolf"
+	CHECKPACKAGE="/usr/bin/$PACKAGE"
      ;;
   konqueror)
 	PACKAGE="konqueror"
